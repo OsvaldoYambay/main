@@ -1,0 +1,58 @@
+<div class="Contformulario">
+  <h2 >Mini Programa</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviarDatos()" class="formulario">
+    
+    <div class="campo">
+      <label for="nombres">Nombres</label>
+      <input 
+        id="nombres" 
+        type="text" 
+        pInputText 
+        formControlName="nombres" 
+        placeholder="Ingrese sus nombres" />
+    </div>
+
+    <div class="campo">
+      <label for="apellidos">Apellidos</label>
+      <input 
+        id="apellidos" 
+        type="text" 
+        pInputText 
+        formControlName="apellidos" 
+        placeholder="Ingrese sus apellidos" />
+    </div>
+
+    <div class="campo">
+      <label for="observacion">Descripción</label>
+      <textarea 
+        id="observacion" 
+        rows="4" 
+        pTextarea 
+        formControlName="observacion" 
+        placeholder="Escriba aquí...">
+      </textarea>
+    </div>
+
+    <div class="acciones">
+      <p-button 
+        type="submit" 
+        label="Enviar" 
+        icon="pi pi-send" 
+        [disabled]="formulario.invalid">
+      </p-button>
+    </div>
+
+  </form>
+
+  @if (mensajeRespuesta) {
+    <div class="alerta-respuesta">
+      <strong><{{ mensajeRespuesta }}></strong>
+      @if (datosEnviados) {
+        <p class="detalle">
+            Enviado: {{ datosEnviados.nombres }}{{ datosEnviados.apellidos }}
+        </p>
+      }
+    </div>
+  }
+</div>
